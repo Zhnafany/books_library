@@ -1,0 +1,14 @@
+<h2><%=t :debtors_list %></h2>
+<% unless @debtors.empty? %>
+<br />
+<div class="paginate">
+	<%= will_paginate @debtors %>
+</div>
+
+<%= render(:partial => "readers/debtors_list", :object => @debtors) %>
+
+<div class="paginate">
+	<%= will_paginate @debtors %>
+</div>
+<% end %>
+<br />

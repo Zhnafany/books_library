@@ -1,0 +1,89 @@
+<%= javascript_include_tag "prototype", "effects", "controls"%>
+<%= stylesheet_link_tag "main_style" %>
+<%= stylesheet_link_tag "table_style" %>
+
+<% if flash[:edit] %>
+	<div id="flash">
+		<em><%= flash[:edit]%></em><br />
+		<%=t :ticket_number %>: <%= @reader.id %><br />
+		<%= @reader.surname %> <%= @reader.name %> <%= @reader.father_name %>
+		<%= button_to t(:edit_reader), :controller => "readers", :action => "edit", :id => @reader %>
+	</div>
+<% end %>
+<div id="main">
+<% form_tag :controller => "readers", :action => "new" do %>
+<table>
+	<tr class="odd">
+		<td rowspan="2"><%=t :birthdate %></td>
+				<td><%= t(:dd) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + t(:mm) + 
+								"&nbsp;&nbsp;&nbsp;&nbsp;" + t(:yyyy) %></td>
+				<tr class="odd"><td>
+					<%= text_field_tag :day, nil, {:size => 1} %>&nbsp;
+					<%= text_field_tag :month, nil, {:size => 1}%>&nbsp; 
+					<%= text_field_tag :year, nil, {:size => 3}%>&nbsp;		
+				</td></tr>	
+	</tr>
+	<tr class="even">	
+  		<td><label for="reader[surname]" class="filter_label"><%=t :surname %></label></td>
+		<td><%= text_field_with_auto_complete :reader, :surname, {:size => 20} %></td>
+	</tr>
+	<tr class="odd">
+		<td><label for="reader[surname]" class="filter_label"><%=t :name %></label></td>
+		<td><%= text_field_with_auto_complete :reader, :name, {:size => 20} %></td>
+	</tr>
+	<tr class="even">
+		<td><label for="reader[surname]" class="filter_label"><%=t :father_name %></label></td>
+		<td><%= text_field_with_auto_complete :reader, :father_name, {:size => 20} %></td>
+		<td><%= submit_tag t(:add_reader) %></td>
+	</tr>
+<% end %>		
+</table>
+<% i=0 %>
+<% for field in @fields do %>
+	
+	<% if i>2 %>  
+		<%= observe_field(field, :frequency => 0.5,
+					 :url => {:controller => "readers", :action => "list"},
+					 :condition => "konstantin()",
+					 :update => 'target_id',
+					 :with => "Form.serializeElements($('#{@fields[0]}', '#{@fields[1]}', 
+					'#{@fields[2]}', '#{@fields[3]}', '#{@fields[4]}', '#{@fields[5]}'))+'&search=true'") %>
+
+	<% else %>
+	<%= observe_field(field, :frequency => 1,
+					 :url => {:controller => "readers", :action => "list"},
+					 :update => 'target_id',
+					 :with => "Form.serializeElements($('#{@fields[0]}', '#{@fields[1]}', 
+					'#{@fields[2]}', '#{@fields[3]}', '#{@fields[4]}', '#{@fields[5]}'))+'&search=true'") %>
+	<% end %>
+	<% i+=1 %>
+<% end %>
+ 
+	<div id="target_id">
+	</div>
+	<script>
+		function konstantin(){
+        if(typeof(String.prototype.trim) === "undefined")
+                {
+                String.prototype.trim = function(){
+                        return String(this).replace(/^\s+|\s+$/g, '');
+                };
+        }
+        var year = document.getElementById("year").value;
+        var day = document.getElementById("day").value;
+        var month = document.getElementById("month").value;
+        var str = year.trim() + '-' + day.trim() + '-' +month.trim();
+        
+        var _date     = /^\d\d\d\d-\d+-\d+$/; 
+        if(!_date.test(str)){
+				
+                return false;
+        }
+		
+		return true;
+	};
+		<%= remote_function :update => 'target_id', :url => { :controller => 'readers', :action=> 'list' },
+					 :with => "Form.serializeElements($('#{@fields[0]}', '#{@fields[1]}', 
+					'#{@fields[2]}', '#{@fields[3]}', '#{@fields[4]}', '#{@fields[5]}'))+'&search=true'" %> 
+	</script>
+</div>

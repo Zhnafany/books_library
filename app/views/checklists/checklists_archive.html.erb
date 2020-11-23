@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "table_style" %>
+<%= stylesheet_link_tag "main_style" %>
+<% if flash[:checklist] %>
+<div id="flash">
+	<em><%= flash[:checklist] %></em><br />
+	<% unless params[:id].nil? %>
+		<%=t :checklist_number %>: <%= @checklist.day_number %><br />
+		<%= button_to t(:edit_checklist), :action => "edit", :id => @checklist %>
+	<% end %>
+</div>
+<% end %>
+<% form_for :date, :action => "checklists_archive" do |f| %>
+	<%=t :checklist_number %><br />
+	<%= f.date_select nil, :start_year => Time.now.year, :end_year => Time.now.year, 
+										  :use_month_numbers => true,
+										  :order => [:day, :month, :year],
+										  :discard_year => true, 
+										  :default => { :day => @day,
+														:month => @month} %><br /><br />
+	<%= submit_tag t(:go) %>
+<% end %>
+
+	<table>
+		<th><%=t :checklists %></th>
+		<th><%=t :filed %></th>
+		<% for checklist in @checklists do %>
+		  <% if @iterator.even? %>
+		  	<tr class="even">
+		  <% elsif @iterator.odd? %>
+		  	<tr class="odd">
+		  <% end %>
+				<td><%= link_to checklist.day_number, :action => "edit", :id => checklist%></td>
+				<td><%= checklist.filed %></td>
+				<td><%= link_to t(:edit), :action => "edit", :id => checklist %></td>
+			</tr>
+			<% @iterator += 1 %>
+		<% end %>
+	</table>

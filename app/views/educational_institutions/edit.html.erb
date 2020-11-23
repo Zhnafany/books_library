@@ -1,0 +1,16 @@
+<h1>Editing educational_institution</h1>
+
+<% form_for(@educational_institution) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @educational_institution %> |
+<%= link_to 'Back', educational_institutions_path %>

@@ -1,0 +1,72 @@
+<%= javascript_include_tag :all, :cache => true %>
+	<h3 style="white-space: nowrap;">ЖИТОМИРСЬКА ОБЛАСНА УНІВЕРСАЛЬНА НАУКОВА БІБЛІОТЕКА IM. O. OЛЬЖИЧА</h3>
+	<h3>Зведений статистичний звіт з <%= @from %> по <%= @to %></h3>
+<div id="form">
+	<table border="1" bordercolor="black" cellpadding="3" cellspacing="0">
+	  <tr>
+	  	<th>&nbsp;</th>
+		<th colspan="3"><%=t :one_reader %></th>
+		<th colspan="3"><%=t :catered_reader %></th>
+		<th colspan="3"><%=t :visiting %></th>
+		<th colspan="3"><%=t :book_delivery %></th>
+	  </tr>
+	  <tr>
+	  	<th><%=t :departments %></th>
+	  <% i = 0; while i < 4 %>
+		<th><%=t :count%></th>
+		<th><%=t :plan%></th>
+		<th style="font-size: 14px;">%</th>
+		<% i += 1 %>
+	  <% end %>	
+	  <% i = 0; bookkeeping = 0 %>
+	  <% while i < @departments.length %>
+			 <tr>
+					<td><%= @departments[i].name %></td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td><%= @catered_reader[@departments[i].id.to_s] %>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td><%= @visiting[@departments[i].id.to_s] %>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+          <td>
+            <% k = 0; j = 0; one_dep = 0 %>
+            <% while k < @departments[i].sectors.length  %>
+                <% sum = 0 %>
+                <% @bookkeeping.each{|key,value|
+                  dep_id = key.gsub(/%\d+$/){ $1 }
+                  brunch_id = key.gsub(/^\d+%/){ $1 }
+                  if dep_id == @departments[i].sectors[k].id.to_s && brunch_id.to_i <= 7
+                    sum += value.to_i
+                  end
+                } %>
+                <% j += 1 %>
+                <% one_dep += sum %>
+              <% k += 1 %>
+            <% end %>
+            <%= one_dep %>&nbsp;</td>
+            <% bookkeeping += one_dep %>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+			</tr>
+			<% i += 1 %>
+	  <% end %>
+	  	<tr>
+	  		<td><%=t :all_at_library %></td>
+			<td><%= @one_reader %>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><%= @catered_reader.values.inject(0){|result, elem| result += elem.to_i } %>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><%= @visiting.values.inject(0){|result, elem| result += elem.to_i } %>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td><%= bookkeeping %>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+	  	</tr>
+	</table>
+</div>

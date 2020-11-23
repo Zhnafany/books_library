@@ -1,0 +1,44 @@
+<%= stylesheet_link_tag "table_style" %>
+<div class="readers_table">
+<table>
+  <tr>
+  	<th><%=t :ticket_number %>
+    <th><%=t :surname %></th>
+    <th><%=t :name %></th>
+    <th><%=t :father_name %></th>
+    <th><%=t :birthdate %></th>
+    <th><%=t :document_type %></th>
+    <th><%=t :document_num %></th>
+	<th><%=t :city %></th>
+	<th><%=t :address %></th>
+	<th><%=t :phone %></th>
+  </tr>
+<% unless debtors_list.nil? %>
+<% iterator = 0 %>
+<% debtors_list.each do |debtor| %>
+	
+  <% if iterator.even? %>
+  	<tr class="even">
+  <% elsif iterator.odd? %>
+  	<tr class="odd">
+  <% end %>
+  <% iterator += 1 %>
+  	<td><%=h debtor.id %></td>
+    <td><%=h debtor.surname %></td>
+    <td><%=h debtor.name %></td>
+    <td><%=h debtor.father_name %></td>
+    <td><%=h debtor.birthdate %></td>
+    <td><%=h debtor.document_type %></td>
+    <td><%=h debtor.document_num %></td>
+	<td><%=h debtor.contact.city.nil? ? "" : debtor.contact.city.name  %></td>
+	<td><%=h  debtor.contact.street.nil? ? "" : debtor.contact.street.name + " д. " + debtor.contact.house_number.to_s + 
+				" кв. " + debtor.contact.flat_number.to_s %></td>
+	<td><%=h debtor.contact.phone1.to_s + " " + debtor.contact.phone2.to_s + 
+			" " + debtor.contact.phone3.to_s %></td>			
+    <td><%= link_to t(:show), :action => "show", :id => debtor %></td>
+    <td><%= link_to t(:edit), :action => "edit", :id => debtor %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+</div>

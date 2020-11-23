@@ -1,0 +1,2 @@
+TRUNCATE TABLE `checklists`;
+TRUNCATE TABLE `checklist_values`;

@@ -1,0 +1,82 @@
+<%= stylesheet_link_tag "reports_style" %>
+<%= javascript_include_tag "prototype", "jquery" %>
+
+<% form_remote_tag :update => "target_id", :url => {:action => "manage"} do %>
+<fieldset id="interval">
+	<legend><%=t :period %></legend>
+		
+		<%= radio_button_tag "period", "interval", false, :onfocus => "jQuery('p > select').attr('disabled', 'disabled');
+																		jQuery('.interval_date').removeAttr('disabled'); butEnable();" %>
+		<p>	
+		<%= t(:from) + "&nbsp;" %>
+		<%= date_select :interval, :from, {:start_year => DateTime.now.year - 5, :use_month_numbers => true,
+								    :order => [:day, :month, :year]}, :class => "interval_date" %><br />
+		<%=t :to %>															 
+		<%= date_select :interval, :to, {:start_year => DateTime.now.year - 5, :use_month_numbers => true,
+									:order => [:day, :month, :year]}, :class => "interval_date" %><br />
+		</p>
+</fieldset>
+<fieldset id="day">
+	<legend><%=t :per_day %></legend>
+		<%= radio_button_tag "period", "day", false, :onfocus => "jQuery('p > select').attr('disabled', 'disabled');
+																	 jQuery('.day_select').removeAttr('disabled'); butEnable();" %>
+		<p><%= date_select :day, :selected, {:start_year => DateTime.now.year - 5, :use_month_numbers => true,
+											:order => [:day, :month, :year]}, :class => "day_select"  %>
+		</p>																		 
+</fieldset>
+<fieldset id="month">
+	<legend><%=t :per_month %></legend>
+		<%= radio_button_tag "period", "month", false, :onfocus => "jQuery('p > select').attr('disabled', 'disabled');
+															 jQuery('.month_select').removeAttr('disabled'); butEnable();"  %>
+		<p>
+			<%= select_month Date.today, {:use_month_names => %w(Січень Лютий Березень Квітень Травень
+											Червень Липень Серпень Вересень Жовтень Листопад Грудень)}, 
+										  {:class => "month_select"}   %>
+		</p>
+</fieldset>
+<fieldset id="quarter">
+	<legend><%=t :per_quarter %></legend>
+	<%= radio_button_tag "period", "quarter", false, :onfocus => "jQuery('p > select').attr('disabled', 'disabled');
+															 jQuery('.quarter_select').removeAttr('disabled'); butEnable();"  %>
+	<p>
+		<%= select_tag "quarter", "<option value='1' >1 #{t(:quarter)}</option><option value='2' >2 #{t(:quarter)}</option>
+									<option value='3' >3 #{t(:quarter)}</option><option value='4' >4 #{t(:quarter)}</option>" , 
+									  {:class => "quarter_select"}   %>
+	</p>
+</fieldset>
+<fieldset id="year">
+	<legend><%=t :from_year_begin %></legend>
+		<%= radio_button_tag "period", "year", false, :onfocus => "jQuery('p > select').attr('disabled', 'disabled'); butEnable();" %>
+</fieldset>
+
+<div id="buttons">	
+
+			<br />													 
+	<%= select_tag :report, "<option value='1'>#{t(:report_readers)}</option>
+						<option value='2'>#{t(:report_brunches)}</option>
+						<option value='3'>#{t(:report_payments)}</option>" %><br />
+	<br />
+	<table border="0">
+		<tr>																 
+	<td valign="top">
+		<div class="dis_button">
+			<%= submit_tag t(:preview), :class => "dis_button"%>
+		</div>
+	</td> 																
+<% end %>
+</tr>
+</table>
+<br />
+<%= button_to t(:print), {:action => "index"}, :onclick => "jQuery('div#target_id').printArea({mode: 'popup', popHt: '200',
+															 popWd: '400', popClose: 'true' });", :class => "dis_button"  %>
+<div id="target_id">
+</div>
+
+</div>
+<script>
+	jQuery.noConflict();
+	function butEnable(){
+		jQuery(".dis_button").removeAttr("disabled");
+	};
+	jQuery(".interval_date, .day_select, .month_select, .quarter_select, .dis_button ").attr("disabled", "disabled");
+</script>									 

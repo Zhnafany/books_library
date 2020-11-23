@@ -1,0 +1,70 @@
+body {
+	color: #666;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+fieldset {
+	background-color: #94ddf2;
+	height: 100px;
+}
+
+#flash {
+	position: absolute;
+	right: 5%;
+	border: 2px solid red;
+	padding: 1em;
+	margin-bottom: 2em;
+	background-color: #EEFBFF ;
+	text-align: right;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+#flash em{
+	color: red;
+}
+
+td {
+	width: 40px;
+	height: 40px;
+}
+
+#interval{
+	position: absolute;
+	top: 40px;
+}
+
+#day{
+	position: absolute;
+	top: 40px;
+	left: 250px;
+}
+
+#month{
+	position: absolute;
+	top: 40px;
+	left: 450px;
+}
+
+fieldset#quarter{
+	position: absolute;
+	top: 40px;
+	left: 590px;
+}
+
+#year{
+	position: absolute;
+	top: 40px;
+	left: 730px;
+}
+
+#buttons{
+	position: absolute;
+	top: 180px;
+}
+
+a {
+	color: #D67200;
+	text-decoration: none;
+}

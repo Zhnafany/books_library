@@ -1,0 +1,24 @@
+body {
+	
+}
+
+fieldset{
+	background-color: #94ddf2;
+}
+
+.username{
+	color: red;
+}
+
+div.flash{
+	color: red;
+	border: 2px solid red;
+}
+
+div strong{
+	color: black;
+}
+
+div strong em{
+	color: red;
+}

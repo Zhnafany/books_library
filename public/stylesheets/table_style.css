@@ -1,0 +1,93 @@
+body {
+	color: #666;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+fieldset{
+	background-color: #EEFBFF;
+}
+
+table {
+	background-color: #45bdf7;
+	border: 1px dotted #45bdf7;
+	margin: 0px;
+	border-spacing: 2px 2px;
+	border-collapse: separate;
+}
+
+tbody {
+	border-color: inherit;
+	display: table-row-group;
+	vertical-align: middle;
+}
+
+td, th {
+	display: table-cell;
+	vertical-align: inherit;
+	font-size: 14px;
+	width: 10px;
+}
+
+th {
+	background-color: #64B8D1;
+	color: white;
+	font-weight: bold;
+}
+tr.even {
+	background-color: white;
+}
+
+tr.odd {
+	background-color: #94ddf2;
+}
+
+table.red {
+	border: 1px dotted #8cdb6d;
+	background-color: #8cdb6d;
+}
+
+tr.even_red {
+	background-color: white;
+}
+
+tr.odd_red {
+	background-color: #C3F1B1;
+}
+
+a {
+	color: #D67200;
+	text-decoration: none;
+}
+
+table.events_select_departments{
+	background-color: inherit;
+	border: 0;	
+}
+
+.flash_error{;
+	float: right;
+	color: red;
+}
+
+.payments {
+	position: absolute;
+	left: 700px;
+	top: 110px;
+	border: 1px dotted #ffa500;
+	background-color: #ffa500;
+}
+
+.payments tr.even{
+	background-color: white;
+}
+
+.payments tr.odd{
+	background-color: #ffcb6a;
+}
+
+#take_photo_button {
+  position: absolute;
+  left: 700px;
+  top: 190px;
+}

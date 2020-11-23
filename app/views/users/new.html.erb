@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "admin_style" %>
+<br />
+<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+<% form_for :user, :url => {:controller => "users", :action => "create"} do |f| %>
+<fieldset>
+	<legend><%= t(:enter_data) %></legend>
+  <p>
+    <%= t(:name) %><br />
+    <%= f.text_field :username, :size => 20, :maxlength => 15 %>
+  </p>
+  <p>
+    <%= t(:password) %><br />
+    <%= f.password_field :password, :size => 20, :maxlength => 15 %>
+  </p>
+  <p>
+    <%= t(:password_confirmation) %><br />
+    <%= f.password_field :password_confirmation, :size => 20, :maxlength => 15 %>
+  </p>
+ </fieldset>
+ <br />
+ <table>
+ 	<tr>
+    	<td><%= f.submit t(:create) %></td>
+    	<td><input value="<%= t(:all_users)%>" type="button" onClick="window.location.pathname = '/users';"></td>
+	</tr>
+  </table>  
+<%end%>

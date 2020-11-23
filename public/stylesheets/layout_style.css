@@ -1,0 +1,18 @@
+body {
+	
+}
+
+div#menu {
+	background: url(../images/menu.png);
+	background-repeat: inherit;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+}
+
+a {
+	color: #D67200;
+	text-decoration: none;
+}
+

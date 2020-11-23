@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  date: 2010-10-13 14:40:14
+  reader_id: 
+  filed: 
+  brunch_id: 
+  sector_id: 
+  quantity: 
+
+two:
+  date: 2010-10-13 14:40:14
+  reader_id: 
+  filed: 
+  brunch_id: 
+  sector_id: 
+  quantity: 

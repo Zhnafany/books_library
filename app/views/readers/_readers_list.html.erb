@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag "table_style" %>
+<div class="readers_table">
+<table>
+  <tr>
+  	<th><%=t :ticket_number %>
+    <th><%=t :surname %></th>
+    <th><%=t :name %></th>
+    <th><%=t :father_name %></th>
+    <th><%=t :birthdate %></th>
+    <th><%=t :document_type %></th>
+    <th><%=t :document_num %></th>
+  </tr>
+<% unless readers_list.nil? %>
+<% iterator = 0 %>
+<% readers_list.each do |reader| %>
+	
+  <% if iterator.even? %>
+  	<tr class="even">
+  <% elsif iterator.odd? %>
+  	<tr class="odd">
+  <% end %>
+  <% iterator += 1 %>
+  	<td><%=h reader.id %></td>
+    <td><%=h reader.surname %></td>
+    <td><%=h reader.name %></td>
+    <td><%=h reader.father_name %></td>
+    <td><%=h reader.birthdate %></td>
+    <td><%=h reader.document_type %></td>
+    <td><%=h reader.document_num %></td>
+    <td><%= link_to t(:show), :action => "show", :id => reader %></td>
+    <td><%= link_to t(:edit), :action => "edit", :id => reader %></td>
+    <td><%= link_to t(:make_payment), :controller => "payments", :action => "pay", :id => reader %>
+    </td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+</div>

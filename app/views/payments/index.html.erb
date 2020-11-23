@@ -1,0 +1,28 @@
+<h1>Listing payments</h1>
+
+<table>
+  <tr>
+    <th>New registration</th>
+    <th>User name</th>
+    <th>Benefit d</th>
+    <th>Money sum</th>
+    <th>Reader</th>
+  </tr>
+
+<% @payments.each do |payment| %>
+  <tr>
+    <td><%=h payment.new_registration %></td>
+    <td><%=h payment.user_name %></td>
+    <td><%=h payment.benefit_id %></td>
+    <td><%=h payment.money_sum %></td>
+    <td><%=h payment.reader_id %></td>
+    <td><%= link_to 'Show', payment %></td>
+    <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+    <td><%= link_to 'Destroy', payment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New payment', new_payment_path %>

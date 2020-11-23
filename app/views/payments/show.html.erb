@@ -1,0 +1,29 @@
+<p>
+  <b>Date:</b>
+  <%=h @payment.created_at %>
+</p>
+
+<p>
+  <b>Registration:</b>
+  <%=h @payment.new_registration %>
+</p>
+
+<p>
+  <b>Benefit:</b>
+  <%=h @payment.benefit.description %>
+</p>
+
+<p>
+  
+  <b>Money sum:</b>
+  <%=h @payment.money_sum %>
+</p>
+
+<p>
+  <b>Reader:</b>
+  <%=h @reader.name %> <%=h @reader.surname %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

@@ -1,0 +1,179 @@
+<%= javascript_include_tag "jquery", "prototype", "effects", "controls" %>
+<%= stylesheet_link_tag "table_style" %>
+
+<h3><%=t :reader_information %></h3>
+<%=t :ticket_number %>: <%= @ticket_number %>
+<table>
+<% form_tag :action => "update", :id => params[:id] do %>
+	<tr class="odd">
+	  	<td>
+	    	<%=t :surname  %><br />
+	    	<%= text_field_with_auto_complete :reader, :surname, {:autocomplete => "off",
+																  :size => 18, :value => @reader.surname}  %>
+	  	</td>
+	  	<td>
+	    	<%=t :name  %><br />
+	      	<%= text_field_with_auto_complete :reader, :name, {:autocomplete => "off",
+															   :size => 20, :value => @reader.name} %>
+	  	</td>
+	  	<td>
+	    	<%=t :father_name  %><br />
+	    	<%= text_field_with_auto_complete :reader, :father_name, {:autocomplete => "off",
+															   :size => 20, :value => @reader.father_name}  %>
+	  	</td>
+	<tr class="even">
+	  	<td colspan="3">
+	    	<%=t :birthdate  %><br />
+	    	<%= date_select :reader, :birthdate, :start_year => 1920, :use_month_numbers => true,
+																 :order => [:day, :month, :year],
+																 :default => { :day => @day, :month =>  @month, :year => @year} %>
+	  	</td>
+	</tr>
+	<tr class="odd">
+	  <td>
+		    <%=t :document_type  %><br />
+		    <%= input :reader, :document_type %>
+	  </td>
+	  
+	  <% fields_for :reader do |f| %>
+		  <td colspan="2"> 
+			    <%=t :document_num  %><br />
+			    <%= f.text_field :document_num, :size => 15, :value => @reader.document_num %>
+		  </td>
+	</tr>
+	<tr class="even">
+		  <td>
+		   		<%=t :benefit  %><br />
+		    	<%= f.select "benefit_id", options_from_collection_for_select(@benefits, "id", "description", @reader.benefit_id) %>
+		  </td>
+		  <td colspan="2">
+			    <%=t :category  %><br />
+				<%= f.select "category_id", options_from_collection_for_select(@categories, "id", "description", @reader.category_id) %>
+		  </td>
+	</tr>
+	<tr class="odd">
+		  <td >
+		    	<%=t :degree  %><br />
+				<%= f.select "degree_id", options_from_collection_for_select(@degreies, "id", "degree", @reader.degree_id) %>
+		  </td>
+		  <td>
+			    <%=t :educational_institution  %><br />
+			    <%= text_field_with_auto_complete :educational_institution, :name, 
+												 {:autocomplete => "off", :size => 15,
+												  :value => @edu}  %>
+		  </td>
+		  <td>
+		    	<%=t :faculty  %><br />
+		    	<%= text_field_with_auto_complete :faculty, :name, {:autocomplete => "off", :size => 15,
+																	:value => @faculty}  %>
+		  </td>
+	  </tr>
+	  <tr class="even">
+	  <td colspan="3">
+	    	<%=t :status  %><br />
+			<%= f.select "status_id", options_from_collection_for_select(@statuses, "id", "description", @reader.status_id) %>
+	  </td>
+	</tr>
+	<% end %>
+  </table>
+  <br />
+  <br />
+  <h3><%=t :contact_information %></h3>
+  <table class="red">
+  	<tr class="odd_red">
+    <td>
+      	<%=t :region  %><br />
+      	<%= text_field_with_auto_complete :region, :name, {:autocomplete => "off", :size => 20,
+														   :value => @region}  %>
+    </td>
+    <td>
+      	<%=t :city  %><br />
+      	<%= text_field_with_auto_complete :city, :name, {:autocomplete => "off", :size => 20,
+														 :value => @city}  %>
+    </td>
+    <td>
+      	<%=t :street  %><br />
+      	<%= text_field_with_auto_complete :street, :name, {:autocomplete => "off", :size => 20,
+														   :value => @street} %>
+    </td>
+	</tr>
+	<tr class="even_red">
+    <td>
+	    <%=t :work_place  %><br />
+      	<%= text_field_with_auto_complete :work_place, :name, {:autocomplete => "off", :size => 20,
+															   :value => @work_place} %>
+    </td>
+    <td colspan="2">
+	  	<%=t :const_work_place  %><br/>
+	  	<%= input :contact, :const_work_place%>
+    </td>
+	</tr>
+	<tr class="odd_red">
+  <% fields_for :contact do |f| %>
+  	<td>
+      	<%=t :house_number  %><br />
+      	<%= f.text_field :house_number, :size => 20,
+										:value => @contact.house_number %>
+    </td>
+    <td>
+      	<%=t :flat_number  %><br />
+      	<%= f.text_field :flat_number, :size => 20,
+									   :value => @contact.flat_number %>
+    </td>
+    <td>
+      	<%=t :post_code  %><br />
+      	<%= f.text_field  :post_code, :size => 20,
+									  :value => @contact.post_code %>
+    </td>
+	</tr>
+	<tr class="even_red">
+    <td>
+	      <%=t :email  %><br />
+	      <%= f.text_field :e_mail1, :size => 20, :value => @contact.e_mail1 %>
+	      <%= f.text_field :e_mail2, :size => 20, :value => @contact.e_mail1 %>
+      	
+    </td>
+    <td colspan="2">
+		<%=t :phone  %><br />
+      	<%= f.text_field :phone1, :size => 20, :value => @contact.phone1 %>
+      	<%= f.text_field :phone2, :size => 20, :value => @contact.phone2 %>
+      	<%= f.text_field :phone3, :size => 20, :value => @contact.phone3 %>
+    </td>
+	</tr>
+  <% end %>
+</table>
+<br />
+<br />
+<% end %>
+<table style="background-color: white;">	
+  <tr>
+  	<td>
+    	<%= button_to 'Back', :controller => "library", :action => "search", :id => @reader %>
+	</td>
+  </tr>
+ </table>
+ <table class="payments">
+	<tr class="odd">
+		<%if @payment_status == true %>
+			<%= content_tag :td, t(:paid) %>
+			</tr>
+			<tr class="even">
+				<td><%= @payment.created_at.year.to_s + 
+								"-" + @payment.created_at.month.to_s + 
+								"-" + @payment.created_at.day.to_s %></td>
+			</tr>	 
+		<% else %>
+			<td style="color: red;">
+				<%=t :not_paid  %>
+				<%= button_to t(:make_payment), :controller => "payments",
+			                                    :action => "pay", :id => @reader %>
+			</td>
+		<% end %>
+	</tr>
+</table>
+ <script>
+ 	jQuery.noConflict();
+	jQuery("input").attr("readonly", "readonly");
+	jQuery("select").attr("disabled", "disabled");
+ </script>
+ 

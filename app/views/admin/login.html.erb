@@ -1,0 +1,25 @@
+<%= stylesheet_link_tag "admin_style" %>
+<div class="title"><h3><%= t(:enter) %></h3></div>
+<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+<div class="admin-form" style="position: relative; width: 94%; height: 32%;">
+  <fieldset>
+  	<legend><%= t(:enter_data) %></legend>
+    <% form_tag do %>
+      <p>
+        <label for="name"><%= t(:login) %></label>
+        <%= text_field_tag :username, params[:username]  %>
+      </p>
+      <p>
+        <label for="password"><%= t(:password) %></label>
+        <%= password_field_tag :password, params[:password] %>
+      </p>
+      <p>
+        <%= submit_tag t(:enter) %>
+      </p>
+    <%end%>
+  </fieldset>
+</div>

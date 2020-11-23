@@ -1,0 +1,81 @@
+<%= stylesheet_link_tag "table_style" %>
+<% unless params[:id] == "" || params[:id].nil? || @reader.nil? %>
+<table>
+  <tr class="odd"><td><%=t :surname %>:</td><td> <%= @reader.surname  %></td></tr>
+  <tr class="even"><td><%=t :name %>:</td><td> <%= @reader.name  %></td></tr>
+  <tr class="odd"><td><%=t :father_name %>:</td><td> <%= @reader.father_name  %></td></tr>
+  <tr class="even"><td><%=t :reader_status %>:</td><td> <%= @reader.status ? @reader.status.description : ""  %></td></tr>
+  <tr class="odd"><td><%=t :reader_payment %>:</td>
+  
+  <%if @payment_status == true %>
+    <%= content_tag :td, t(:paid) %> 
+  <% else %>
+    <td style="color: red;">
+      <%=t :not_paid  %>
+      <%= button_to t(:make_payment), :controller => "payments",
+                                        :action => "pay", :id => @reader %>
+    </td>
+  <% end %>
+  </tr>
+  <tr class="even"><td><%=t :reader_bookkeep %>:</td>
+  <%if @bookkeep == true %>
+    <td style="color: red;">
+      <%= t(:bookkeep_yes) %>
+      <%= button_to t(:debtor), {:controller => "library",
+                         :action => "remove_from_debtor",
+                         :id => @reader}, 
+        {:confirm => "Ви впевнені що хочете зняти статус \"Боржник\" с цього читача?"} %>
+    </td> 
+  <% else %>
+    <td>
+      <%=t(:bookkeep_no)  %>
+      <%= button_to t(:make_debtor), {:controller => "library", :action => "make_debtor", :id => @reader}, {:confirm => "Ви впевнені що хочете встановити статус \"Боржник\" на цього читача?"}  %>
+    </td>
+  <% end %>
+  </tr>
+    <tr class="odd">
+      <td colspan="2" align="center">
+      <% if @reader.checklists.find(:first, :conditions => "status = 'виданний'")  %>
+        <%= button_to t(:fill_checklist), {:controller => "checklists", :action => "new", :id => @reader} %>
+      <% else %>
+        <%= button_to t(:give_checklist), {:controller => "checklists", :action => "give_checklist", :id => @reader}, :onclick => "window.open('checklists/print_checklist?id=' + #{@reader.id}, 'mywindow','width=800,height=600,scrollbars=yes')" %>
+      <%end%></td>
+  </tr>
+  <tr class="even">
+    <td colspan="2"><%= button_to t(:print_reader_ticket), {:action => "index", :id => @reader}, :onclick => "window.open('library/print_reader_ticket?id=' + #{@reader.id}, 'mywindow','width=800,height=600,scrollbars=yes')"  %></td>
+  </tr>
+  <% if @fotoButton.nil? %>
+    <tr class="odd">
+      <td colspan="2" align="center">
+        <%= button_to t(:make_photo), {:controller => "readers",
+          :action => "take_photo", :id => @reader} %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<div>
+<% else %>
+<table>	
+  <tr class="odd"><td><%=t :surname %>:</td></tr>
+  <tr class="even"><td><%=t :name %>:</td></tr>
+  <tr class="odd"><td><%=t :father_name %>:</tr>
+  <tr class="even"><td><%=t :reader_status %>:</td></tr>
+  <tr class="odd"><td><%=t :reader_payment %>:</td></tr>
+  <tr class="even"><td><%=t :reader_bookkeep %>:</td></tr>
+</table>
+<br />
+<% end %>
+<table>
+  <tr>
+    <td><%= button_to t(:search_and_edit), :action => "search" %></td>
+    <td><%= button_to t(:checklists), :controller => "checklists", :action => "index" %></td>
+  </tr>
+  <tr>
+    <td><%= button_to t(:debtors_list), :controller => "readers", :action => "debtor_list" %></td>
+    <td><%= button_to t(:reports), :controller => "reports" %></td>
+  </tr>
+  <tr>
+    <td><%= button_to t(:events), :controller => "events" %></td>
+  </tr>
+</table>

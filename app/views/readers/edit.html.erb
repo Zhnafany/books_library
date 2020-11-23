@@ -1,0 +1,27 @@
+<%= javascript_include_tag "prototype", "effects", "controls"%>
+<%= stylesheet_link_tag "table_style" %>
+
+<%= render :partial => "form", :locals => {:action => "update"} %>
+
+<table class="payments">
+	<tr class="odd">
+		<%if @payment_status == true %>
+			<%= content_tag :td, t(:paid) %>
+			</tr>
+			<tr class="even">
+				<td><%= @payment.created_at.year.to_s + 
+								"-" + @payment.created_at.month.to_s + 
+								"-" + @payment.created_at.day.to_s %></td>
+			</tr>	 
+		<% else %>
+			<td style="color: red;">
+				<%=t :not_paid  %>
+				<%= button_to t(:make_payment), :controller => "payments",
+			                                    :action => "pay", :id => @reader %>
+			</td>
+		<% end %>
+	</tr>
+</table>
+
+<%= button_to t(:make_photo), {:action => :take_photo, :id => @reader},
+                              {:id => "take_photo_button"} %>

@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  surname: MyString
+  name: MyString
+  father_name: MyString
+  birthdate: 2010-10-12
+  regist_date: 2010-10-12
+  document_type: 
+  document_num: MyString
+  contact_id: 
+  category_id: 
+  education_id: 
+  status_id: 
+  payment_id: 
+  benefit_id: 
+
+two:
+  surname: MyString
+  name: MyString
+  father_name: MyString
+  birthdate: 2010-10-12
+  regist_date: 2010-10-12
+  document_type: 
+  document_num: MyString
+  contact_id: 
+  category_id: 
+  education_id: 
+  status_id: 
+  payment_id: 
+  benefit_id: 

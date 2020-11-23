@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "table_style" %>
+<h1><%=t :events%></h1>
+
+<table>
+  <tr>
+    <th><%=t :event_name %></th>
+    <th><%=t :event_listener %></th>
+	<th><%=t :event_date %></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.name %></td>
+    <td><%=h event.count %></td>
+	<td><%=h event.created_at.year.to_s + "-" + event.created_at.month.to_s + "-" + event.created_at.day.to_s  %></td>
+    <td><%= link_to t(:edit), :action => "edit", :id => event %></td>
+    <td><%= link_to t(:destroy), {:action => "destroy", :id => event}, :confirm => "#{t(:are_you_sure)}" %></td>
+  </tr>
+<% end %>
+</table>
+<div class="paginate">
+	<%= will_paginate @events %>
+</div>
+
+<br />
+<table>
+	<tr>
+		<td><%= button_to t(:create), :action => "new" %></td>
+	</tr>
+</table>

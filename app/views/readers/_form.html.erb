@@ -1,0 +1,155 @@
+<% unless @errors.nil? %>
+  <div class="flash_error">
+    <% @errors.each do |attr, msg| %>
+      <p><%= t(:field).capitalize + " \"" + t(attr) + "\" " + msg %></p>
+    <% end %>
+  </div>
+<% end %>
+<table>
+
+<h3><%=t :reader_information %></h3>
+<%=t :ticket_number %>: <%= @ticket_number %>
+
+<% form_for :reader, :url => {:action => action, :id => params[:id] } do |f| %>
+	<tr class="odd">
+    <td>
+      <%=t :surname  %><br />
+      <%= text_field_with_auto_complete :reader, :surname,
+        {:autocomplete => "off", :size => 18, :value => @surname}  %>
+    </td>
+    <td>
+        <%=t :name  %><br />
+        <%= text_field_with_auto_complete :reader, :name,
+             {:autocomplete => "off", :size => 20, :value => @name} %>
+    </td>
+    <td>
+      <%=t :father_name  %><br />
+      <%= text_field_with_auto_complete :reader, :father_name,
+        {:autocomplete => "off", :size => 20, :value => @father_name}  %>
+    </td>
+	</tr>
+	<tr class="even">
+	  	<td colspan="3">
+        <%=t :birthdate  %><br />
+        <%= f.date_select :birthdate, :start_year => 1920, :use_month_numbers => true,
+          :order => [:day, :month, :year], :default => { :day => @day,
+            :month =>  @month, :year => @year} %>
+	  	</td>
+	 </tr>
+	 <tr class="odd">
+	  <td>
+      <%=t :document_type  %><br />
+      <%= input :reader, :document_type %>
+	  </td>
+	  
+    <td colspan="2">
+      <%=t :document_num  %><br />
+      <%= f.text_field :document_num, :size => 12 %>
+    </td>
+	</tr>
+	<tr class="even">
+		  <td>
+        <%=t :benefit  %><br />
+        <%= f.select "benefit_id",
+          options_from_collection_for_select(@benefits, "id", "description") %>
+		  </td>
+		  <td colspan="2">
+        <%=t :category  %><br />
+        <%= f.select "category_id",
+          options_from_collection_for_select(@categories, "id", "description") %>
+		  </td>
+	</tr>
+	<tr class="odd">
+		  <td>
+        <%=t :degree  %><br />
+        <%= f.select "degree_id",
+            options_from_collection_for_select(@degreies, "id", "degree") %>
+		  </td>
+
+		  <td>
+        <%=t :educational_institution  %><br />
+        <%= text_field_with_auto_complete :educational_institution, :name,
+          {:autocomplete => "off", :size => 12}  %>
+		  </td>
+		  <td>
+        <%=t :faculty  %><br />
+        <%= text_field_with_auto_complete :faculty, :name,
+            {:autocomplete => "off", :size => 12}  %>
+		  </td>
+	</tr>
+	<tr class="even">
+		  <td colspan="3">
+		    	<%=t :status  %><br />
+				<%= f.select "status_id", options_from_collection_for_select(@statuses, "id", "description") %>
+		  </td>
+	</tr>
+  </table>
+  <br />
+  <br />
+  <h3><%=t :contact_information %></h3>
+  <table class="red">
+    <tr class="odd_red">
+    <td>
+        <%=t :region  %><br />
+        <%= text_field_with_auto_complete :region, :name, {:autocomplete => "off", :size => 20}  %>
+    </td>
+    <td>
+        <%=t :city  %><br />
+        <%= text_field_with_auto_complete :city, :name, {:autocomplete => "off", :size => 20}  %>
+    </td>
+    <td>
+        <%=t :street  %><br />
+        <%= text_field_with_auto_complete :street, :name, {:autocomplete => "off", :size => 20}  %>
+    </td>
+	</tr>
+	<tr class="even_red">
+  <% fields_for :contact do |c| %>
+  	<td>
+      	<%=t :house_number  %><br />
+      	<%= c.text_field :house_number, :size => 20 %>
+    </td>
+    <td>
+      	<%=t :flat_number  %><br />
+      	<%= c.text_field :flat_number, :size => 20 %>
+    </td>
+    <td>
+      	<%=t :post_code  %><br />
+      	<%= c.text_field  :post_code, :size => 20 %>
+    </td>
+	</tr>
+		<tr class="odd_red">
+    <td>
+	    <%=t :work_place  %><br />
+      	<%= text_field_with_auto_complete :work_place, :name, {:autocomplete => "off", :size => 20}  %>
+    </td>
+    <td colspan="2">
+	  	<%=t :const_work_place  %><br/>
+	  	<%= input :contact, :const_work_place%>
+    </td>
+	</tr>
+	<tr class="even_red">
+    <td>
+    	<%=t :email  %><br />
+      <%= c.text_field :e_mail1, :size => 20 %>
+      <%= c.text_field :e_mail2, :size => 20 %>
+    </td>
+    <td  colspan="2">
+      <%=t :phone  %><br />
+      	<%= c.text_field :phone1, :size => 20 %>
+      	<%= c.text_field :phone2, :size => 20 %>
+      	<%= c.text_field :phone3, :size => 20 %>
+    </td>
+	</tr>
+  <% end %>
+</table>
+<br />
+<br />
+<table style="background-color: white;">	
+  <tr>
+  	<td>
+    	<%= f.submit t(:next) %>
+	</td>
+  </tr>
+ </table>
+<% end %>
+</table>

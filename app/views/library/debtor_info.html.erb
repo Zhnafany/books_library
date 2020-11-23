@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag "table_style" %>
+<% unless params[:id] == "" || params[:id].nil? || @reader.nil? %>
+<table>
+	<tr class="odd"><td><%=t :surname %>:</td><td> <%= @reader.surname  %></td></tr>
+	<tr class="even"><td><%=t :name %>:</td><td> <%= @reader.name  %></td></tr>
+	<tr class="odd"><td><%=t :father_name %>:</td><td> <%= @reader.father_name  %></td></tr>
+	<tr class="even"><td><%=t :reader_status %>:</td><td> <%= @reader.status.description  %></td></tr>
+	<tr class="odd"><td><%=t :birthdate %></td><td><%= @reader.birthdate %></td></tr>
+	<tr class="even"><td><%=t :document_type %></td><td><%= @reader.document_type %></td></tr>
+	<tr class="odd"><td><%=t :document_num %></td><td><%= @reader.document_num %></td></tr>
+	<tr class="even"><td><%=t :city %></td><td><%= @reader.contact.city.nil? ? "" : @reader.contact.city.name %></td></tr>
+	<tr class="odd"><td><%=t :address %></td><td><%=h @reader.contact.street.nil? ? "" : @reader.contact.street.name + " д. " + 
+			@reader.contact.house_number.to_s +	" кв. " + @reader.contact.flat_number.to_s %></td></tr>
+	<tr class="even"><td><%=t :phone %></td><td><%=h @reader.contact.phone1.to_s + " " + @reader.contact.phone2.to_s + 
+			" " + @reader.contact.phone3.to_s %></td></tr>
+	<tr class="odd"><td><%=t :reader_bookkeep %>:</td>
+	<%if @bookkeep == true %>
+		<td style="color: red;">
+			<%= t(:bookkeep_yes) %>
+			<%= button_to t(:debtor), {:controller => "library",
+														 :action => "remove_from_debtor",
+														 :id => @reader}, 
+									{:confirm => "Ви впевнені що хочете зняти статус \"Боржник\" с цього читача?"} %>
+		</td> 
+	<% else %>
+		<td>
+			<%=t(:bookkeep_no)  %>
+			<%= button_to t(:make_debtor), {:controller => "library",
+											 :action => "make_debtor",
+											 :id => @reader},
+						{:confirm => "Ви впевнені що хочете встановити статус \"Боржник\" на цього читача?"}  %>
+		 
+		</td>
+	<% end %>
+</table>
+<br />
+<div>
+<% else %>
+<table>	
+	<tr class="odd"><td><%=t :surname %>:</td></tr>
+	<tr class="even"><td><%=t :name %>:</td></tr>
+	<tr class="odd"><td><%=t :father_name %>:</tr>
+	<tr class="even"><td><%=t :reader_status %>:</td></tr>
+	<tr class="odd"><td><%=t :birthdate %></td></tr>
+	<tr class="even"><td><%=t :document_type %></td></tr>
+	<tr class="odd"><td><%=t :document_num %></td></tr>
+	<tr class="even"><td><%=t :city %></td></tr>
+	<tr class="odd"><td><%=t :address %></td></tr>
+	<tr class="even"><td><%=t :phone %></td></tr>
+	<tr class="odd"><td><%=t :reader_bookkeep %>:</td></tr>
+	
+</table>
+<br />
+<% end %>

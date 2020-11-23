@@ -1,0 +1,7 @@
+<% form_for :new_brunch, :url => {:action => "create_brunch",
+                                   :id => params[:id]} do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create" %>
+<%end%>

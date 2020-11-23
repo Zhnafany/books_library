@@ -1,0 +1,17 @@
+update brunches set id = 20 where id = 14;
+
+update checklist_values set brunch_id = 20 where brunch_id = 14;
+
+ALTER TABLE `brunches` AUTO_INCREMENT =14;
+
+update departments set name = "Інтернет-центр" where id = 18;
+
+update sectors set name = "Інтернет-центр" where department_id = 18;
+
+update departments set name = "МБА" where id = 17;
+
+update sectors set name = "МБА" where department_id = 17;
+
+update brunches set name = 'Періодика' where id = 9;
+
+update brunches set name = 'Спец. вид.' where id = 8;

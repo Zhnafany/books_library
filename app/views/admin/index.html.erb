@@ -1,0 +1,11 @@
+<%= stylesheet_link_tag "admin_style" %>
+<h3><%= t(:administation) %></h3>
+<%= button_to t(:add_user), :controller => "users", :action => "new" %>
+<%= button_to t(:brunches_departments), :controller => "departments" %>
+<%= button_to t(:change_price), :action => "change_price" %>
+<br />
+<%= button_to t(:add_street), :controller => "streets", :action => "new" %>
+<%= button_to t(:add_city), :controller => "cities", :action => "new" %>
+<%= button_to t(:add_work_place), :controller => "work_places", :action => "new" %>
+<%= button_to t(:add_faculty), :controller => "facultise", :action => "new" %>
+<%= button_to t(:add_edu), :controller => "educational_institution" %>

@@ -1,0 +1,64 @@
+
+<%= stylesheet_link_tag "reports_style"%>
+<h3 style="white-space: nowrap;">ЖИТОМИРСЬКА ОБЛАСНА УНІВЕРСАЛЬНА НАУКОВА БІБЛІОТЕКА IM. O. OЛЬЖИЧА</h3>
+<h3>Звіт по галузям знань з <%= @from %> по <%= @to %></h3>
+<div id="form">
+	<table border="1" bordercolor="black" cellpadding="0" cellspacing="0">
+	  <tr>
+	  	<td style="border: 0" colspan="4">
+		<th style="border: 0"><%=t :brunch %></th>
+	  </tr>
+	  <tr>
+		 <th><%=t :department %></th> 
+		 <th><%=t :sector %></th>
+	  <% @brunches.each do |brun|  %> <th><%= brun.name %></th> <% end %> <th><%= t(:all_at_sectors) %></th> </tr> <% i = 0; j = 0; k = 0; a = 0; all_sum = 0; department_sum = 0; %>
+	  <% while a <= @departments.length %>
+      <% unless a == @departments.length %>
+        <% while k <= @departments[a].sectors.length  %>
+         <tr>
+          <% if k == 0 %>
+            <td style="border-bottom: 0; border-left: 0"><%= @departments[a].name %></td>
+            <td>
+              <%= @departments[a].sectors[k].name %>
+            </td>
+          <% elsif k == @departments[a].sectors.length && @departments[a].sectors.length > 1 %>
+            <td colspan="2">
+              <%= t(:all_at_department) %>
+            </td>
+          <% elsif k == @departments[a].sectors.length && @departments[a].sectors.length == 1 
+            k += 1
+            break
+          else %>
+            <td></td>
+            <td><%= @departments[a].sectors[k].name %></td>
+          <% end %>
+          <% while j <= @brunches.length %>
+            <td>
+              <%= @values[i][j] %>
+            </td>
+            <% j += 1 %>
+          <% end %>
+        </tr>
+          <% j = 0
+          k += 1
+          i += 1%>
+        <% end %>
+        <% k = 0
+        a += 1 %>
+      <% else %>
+        <tr>
+          <td colspan="2">
+            <%= t(:all_at_library) %>
+          </td>
+          <% while j <= @brunches.length %>
+            <td>
+              <%= @values[i][j] %>
+            </td>
+            <% j += 1 %>
+          <% end %>
+        </tr>
+        <% a += 1 %>
+      <% end %>
+    <% end %>
+	</table>
+</div>

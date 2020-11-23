@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "table_style" %>
+<h1><%=t :event_new%></h1>
+
+<% form_for :event, :url => {:action => "update", :id => params[:id]} do |f| %>
+  <%= f.error_messages %>
+<fieldset>
+  <legend><%=t :enter_event_data %></legend>
+  <p>
+    <%=t :event_name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%=t :event_listener %><br />
+    <%= f.text_field :count %>
+  </p>
+</fieldset>
+<br />
+<table>
+<tr>
+    <td><%= f.submit t(:edit) %></td>
+	<td><input value="<%= t(:back)%>" type="button" onClick="window.location.pathname = '/events';"></td>
+</tr>
+</table>
+<% end %>

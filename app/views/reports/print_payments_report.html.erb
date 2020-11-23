@@ -1,0 +1,20 @@
+<h3 style="white-space: nowrap;">ЖИТОМИРСЬКА ОБЛАСНА УНІВЕРСАЛЬНА НАУКОВА БІБЛІОТЕКА IM. O. OЛЬЖИЧА</h3>
+<h3>Звіт по оплаті з <%= @from %> по <%= @to %></h3>
+<table border="1" bordercolor="black" cellpadding="3" cellspacing="0">
+	<th><%= t(:ticket_number) %></th>
+	<th><%= t(:date)%></th>
+	<th><%= t(:money_paided) %></th>
+	<% for payment in @payments  %>
+	<tr>
+		<td><%= payment.reader_id %></td>
+		<td><%= payment.created_at.year.to_s + "-" + payment.created_at.month.to_s + "-" + payment.created_at.day.to_s + " " + 
+			    payment.created_at.hour.to_s + ":" + payment.created_at.min.to_s %></td>
+		<td><%= payment.money_sum %></td>
+	</tr>
+	<% end %>
+	<tr>
+		<td><%= t(:all_at_library) %></td>
+                <td>&nbsp;</td>
+                <td><%= @sum %></td>
+	</tr>
+</table>

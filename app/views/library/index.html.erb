@@ -1,0 +1,51 @@
+<%= javascript_include_tag "prototype" %>
+<%= stylesheet_link_tag "table_style" %>
+<%= stylesheet_link_tag "main_style" %>
+
+<% if flash[:checklist] %>
+<div id="flash">
+	<em><%= flash[:checklist] %></em><br />
+	<%=t :checklist_number %>: <%= @checklist.day_number %><br />
+	<%= button_to t(:edit_checklist), :controller => "checklists", :action => "edit", :id => @checklist %>
+</div>
+<% end %>
+
+<% if flash[:pay] || flash[:new]%>
+<div id="flash">
+	<% if flash[:new] %>
+		<em><%= flash[:new]%></em><br />
+	<% elsif flash[:pay] %>
+		<em><%= flash[:pay]%></em><br />
+	<% end %>
+		<%=t :ticket_number %>: <%= @reader.id %><br />
+		<%= @reader.surname %> <%= @reader.name %> <%= @reader.father_name %>
+		<%= button_to t(:edit_reader), :controller => "readers", :action => "edit", :id => @reader %>
+</div>
+<% end %>
+
+
+<div id="main" align="center" >
+	<h1><%=t :main %></h1>
+	
+	<%= button_to t(:new_registration), :action => "search" %>
+
+		<label for="id" class="filter_label"><%=t :ticket_number %></label><br />
+		<%= text_field_tag :id, @ticket_number, :size => 14 %><br />
+
+	<%= observe_field 'id',
+					  :frequency => 1,
+	                  :update => 'target_id', 
+	                  :url => { :controller => 'library', :action=> 'reader_info' }, 
+	           		  :with => "'id=' + $('id').value" %>
+	
+	<div id="target_id">
+
+	</div>
+	
+	 <script>
+    	<%= remote_function :update => 'target_id', :url => { :controller => 'library', :action=> 'reader_info' },
+							:with => "'id=' + $('id').value "%>
+	</script>
+		<br />
+</div>
+

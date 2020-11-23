@@ -1,0 +1,294 @@
+
+ua:
+
+  activerecord:
+    errors: 
+        template: 
+            body: "Прийміть до уваги дані обмеження"
+            header: "Помилка вводy"
+        messages:
+            empty: "Не може бути пустою"
+
+  address: "Адреса"
+
+  are_you_sure: "Ви впевнені?"
+
+  all_at_library: "Всього по б-ці"
+
+  all_at_sectors: "Всього по секторам"
+
+  all_at_departments: "Всього по вiддiлам"
+
+  all_at_department: "Всього по вiддiлу"
+
+  all_at_reading_room: "Всього по читальному залу"
+
+  add_reader: "Додати користувача"
+
+  administation: "Адміністрування"
+
+  add_street: "Додати вулицю"
+
+  add_city: "Додати місто"
+
+  add_work_place: "Додати місто роботи"
+
+  add_user: "Додати користувача"
+
+  add_faculty: "Додати факультет"
+
+  add_edu: "Додати ВУЗ"
+
+  all_users: "Всі користувачі"
+
+  hello: "Добридень"
+
+  library: "Бібліотека"
+
+  login: "Вхід"
+
+  logout: "Вихід"
+
+  login_please_message: "Авторизуйтеся будь-ласка"
+
+  back: "Назад"
+
+  benefit: "Пільги"
+
+  brunch: "Галузь"
+
+  birthdate: "Дата народження"
+
+  bookkeep_yes: "Так"
+
+  bookkeep_no: "Ні"
+
+  book_delivery: "Книговидача"
+
+  brunches_departments: "Галузі та відділи"
+
+  category: "Категорія"
+
+  city: "Місто"
+
+  const_work_place: "Постійне місце роботи"
+
+  create: "Створити"
+
+  contact_information: "Контактна інформація"
+  
+  checklists_empty: "Пусті контрольні талони"
+  
+  checklists_filed: "Заповнені контрольні талони" 
+  
+  checklists: "Контрольні талони"
+  
+  checklist_number: "Номер КТ"
+  
+  checklists_archive: "Архів контрольних талонів"
+  
+  catered_reader: "Обслужений читач"
+  
+  count: "Кількість"
+  
+  count_field_empty: "Поле \"Кількість слухачів\" пусте"
+
+  change_price: "Змiнити цiну"
+  
+  new_registration: "Нова регістрація"
+  
+  new_payment: "Оплата"
+  
+  name: "Ім'я"
+  
+  next: "Далі"
+
+  new_price: "Нова цiна"
+
+  now_price: "Теперiшня цiна"
+  
+  numeric_only: "В полі \"Кількість слухачів\" дозваляются тільки числа"
+  
+  name_field_empty: "Поле \"Кількість слухачів\" пусте"
+  
+  make_debtor: "Зробити боржником"
+  
+  make_payment: "Переєстрація"
+  
+  main: "Головна"
+  
+  money_to_pay: "Сумма до сплати"
+  
+  money_paided: "Сплачена сумма"
+  
+  mm: "ММ"
+  
+  father_name: "По батькові"
+  
+  faculty: "Факультет"
+  
+  search_and_edit: "Пошук/Редагування читача"
+  
+  surname: "Прізвище"
+  
+  save: "Зберегти"
+  
+  sector: "Сектор"
+  
+  status: "Статус"
+  
+  street: "Вулиця"
+  
+  ticket_number: "Номер квитка"
+  
+  to: "по: "
+  
+  there_are_no_such_checklist: "Сьогодні нема контрольного талону с таким номером"
+  
+  degree: "Освіта"
+  
+  department: "Відділ"
+  
+  departments: "Відділи"
+  
+  debtor: "БОРЖНИК"
+  
+  document_type: "Тип документа"
+  
+  document_num: "Серійний номер док."
+  
+  destroy: "Видалити"
+  
+  debtors_list: "Список боржників"
+  
+  debtors: "Боржники"
+  
+  dd: "ДД"
+  
+  date: "Дата"
+  
+  give_checklist: "Видати контр. талон"
+  
+  yyyy: "РРРР"
+  
+  fill_checklist: "Заповнити контр. талон"
+  
+  flat_number: "Номер квартири"
+  
+  from_year_begin: "З початку року"
+  
+  from_month_begin: "З початку місяця"
+  
+  from: "З: "
+  
+  filed: "Заповнений"
+  
+  price_changed: "Цiна змiнена успiшно"
+
+  per_day: "За день"
+  
+  per_month: "За місяць"
+  
+  period: "За період"
+  
+  password: "Пароль"
+  
+  print: "Надрукувати"
+  
+  show: "Показати"
+  
+  edit: "Редагувати"
+  
+  edit_reader: "Редагувати читача"
+  
+  edit_checklist: "Редагувати КТ"
+  
+  events: "Масові заходи"
+ 
+  event_date: "Дата заходу"
+  
+  event_name: "Назва заходу"
+  
+  event_listener: "Кількість слухачів"
+  
+  event_new: "Новий захід"
+  
+  educational_institution: "Вуз"
+  
+  enter_event_data: "Введіть данні заходу"
+  
+  enter_data: "Введіть данні"
+  
+  enter: "Вхід"
+  
+  email: "Електронна скринька"
+    
+  region: "Область"
+  
+  reader_information: "Информація читача"
+  
+  reader_status: "Статус читача"
+  
+  reader_payment: "Статус оплати"
+  
+  reader_bookkeep: "Утримання книг"
+  
+  registration_type: "Вид регістрації"
+  
+  reports: "Звіти"
+  
+  report_readers: "Звіт по читачам"
+  
+  report_brunches: "Звіт по галузям"
+  
+  report_payments: "Звіт по оплаті"
+  
+  work_place: "Місце роботи"
+  
+  house_number: "Номер дому"
+  
+  post_code: "Поштовий індекс"
+  
+  print_checklist: "Надрукувати форму КТ"
+  
+  print_reader_ticket: "Hадрукувати читацький квиток"
+  
+  paid: "Оплачено"
+  
+  plan: "План"
+  
+  preview: "Переглянути"
+  
+  not_paid: "Потрібна переєстрація"
+  
+  phone: "Телефон"
+  
+  per_quarter: "За квортал"
+  
+  password_confirmation: "Підтвердження пароля"
+  
+  one_reader: "Єдиний читач"
+  
+  visiting: "Відвідування"
+  
+  quarter: "Квартал"
+  
+  user: "Користувач"
+  
+  users: "Користувачі"
+  
+  user_created: "Користувач створений"
+  
+  user_didnt_create: "Перевірте правильність введених данних"
+  
+  logout_message: "вдало вийшов з системи"
+  
+  invalid_user_password: "Неправильний логин та пароль"
+  
+  go: "Перейти"
+
+  code: "код"
+
+  field: "поле"
+
+  make_photo: "Cфотографувати"

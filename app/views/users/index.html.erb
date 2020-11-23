@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "admin_style" %>
+<%= stylesheet_link_tag "table_style" %>
+<br />
+<h3><%= t(:users) %></h3>
+<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+<table>
+	<tr>
+		<th><%= t(:name) %></th>
+	</tr>
+<% iterator = 0 %>
+<% for user in @users %>
+<% if iterator.odd? %>
+	<tr class="odd">
+<% elsif iterator.even? %>
+	<tr class="even">
+<% end %>
+    <td><%= user.username %></td>
+    <td><%= link_to t(:destroy), {:action => "delete", :id => user} %></td>
+	<% iterator += 1 %>
+</tr>  
+<%end%>
+</table>
+<br />
+  <%= button_to t(:add_user), :action => "new" %>

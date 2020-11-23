@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag "table_style" %>
+<h1><%=t :new_payment %></h1>
+
+<table>
+<% form_for :payment, :url => {:action => "create", :id => params[:id]}  do |f| %>
+  <%= f.error_messages %>
+
+<tr class="odd">
+	<td><%=t :ticket_number %></td>
+	<td><%= @reader.id %></td>
+</tr>
+<tr class="even">
+	<td><%=t :registration_type%></td>
+    <td><%= f.enum_select :new_registration %></td>
+</tr>
+<tr class="odd">
+	<td><%=t :benefit%></td>
+    <td><%= @reader.benefit.description %></td>
+</tr>
+<tr class="even">
+	<td><%= t(:money_to_pay) %></td>
+	<td><%= f.text_field :money_sum, :value => @sum %></td>
+</tr>
+
+  <tr>
+    <td><%= f.submit t(:next) %></td>
+  </tr>
+<% end %>

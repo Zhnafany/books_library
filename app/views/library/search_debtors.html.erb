@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "table_style" %>
+<%= stylesheet_link_tag "main_style" %>
+<%= javascript_include_tag "prototype" %>
+<% if flash[:new]%>
+<div id="flash">
+		<em><%= flash[:new]%></em><br />
+		<%=t :ticket_number %>: <%= @reader.id %><br />
+		<%= @reader.surname %> <%= @reader.name %> <%= @reader.father_name %>
+		<%= button_to t(:edit_reader), :controller => "readers", :action => "edit", :id => @reader %>
+</div>
+<% end %>
+<div id="main" align="center" >
+	<h2><%= t(:debtors_list) %></h2><br />
+	<label for="id" class="filter_label"><%=t :ticket_number %></label><br />
+	<%= text_field_tag :id, @ticket_number, :size => 14 %><br />
+	
+	<%= observe_field 'id',
+					  :frequency => 1,
+	                  :update => 'target_id', 
+	                  :url => { :controller => 'library', :action=> 'debtor_info' }, 
+	           		  :with => "'id=' + $('id').value" %>
+	
+	<div id="target_id">
+	</div>
+	
+	 <script>
+		<%= remote_function :update => 'target_id', :url => { :controller => 'library', :action=> 'debtor_info' },
+							:with => "'id=' + $('id').value "%>
+	</script>
+</div>

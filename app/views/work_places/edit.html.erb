@@ -1,0 +1,16 @@
+<h1>Editing work_place</h1>
+
+<% form_for(@work_place) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @work_place %> |
+<%= link_to 'Back', work_places_path %>

@@ -1,0 +1,27 @@
+body {
+	color: #666;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	
+}
+#flash {
+	position: absolute;
+	right: 5%;
+	border: 2px solid red;
+	padding: 1em;
+	margin-bottom: 2em;
+	background-color: #EEFBFF ;
+	text-align: right;
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+#flash em{
+	color: red;
+}
+
+
+a {
+	color: #D67200;
+	text-decoration: none;
+}

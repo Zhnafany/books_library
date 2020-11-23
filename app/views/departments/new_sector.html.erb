@@ -1,0 +1,7 @@
+<% form_for :new_sector, :url => {:action => "create_sector",
+                                   :id => params[:id]} do |f| %>
+  
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create" %>
+<%end%>

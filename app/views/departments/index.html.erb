@@ -1,0 +1,31 @@
+<h1>Departments</h1>
+  <%=t :hello %>
+ <table> 
+  <tr>
+    <th>Department<th/>
+    <th>Sectors<th/>
+  <tr/>
+  <% @departments.each do |department| %>
+      <tr>
+        <td><%= department.name %><td/>
+        <% unless department.sectors.any? %>
+          <td> <td/>
+        <% end %>
+        <% department.sectors.each do |sector| %>
+          <td> <%= sector.name %> <td/>
+        <%end%>
+        <td><%= link_to "Add sector", :action => "new_sector", :id => department  %><td/>
+      <tr/> 
+  <% end %>
+  <tr><td><%= link_to "add department", :action => "new" %><td/><tr/>
+  <table/>
+
+<h3>Brunches<h3/>
+  <table>
+  <% @brunches.each do |brunch| %>
+    <tr>
+      <td><%= brunch.name %> <td/>
+    <tr/>
+  <% end %>
+  <tr><td><%= link_to "add brunch", :action => "new_brunch" %><td/><tr/>
+  <table/>

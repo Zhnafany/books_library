@@ -1,0 +1,8 @@
+<p>
+  <%= t(:now_price) + ": " +  @now_price.to_s %>
+</p>
+<% form_tag do -%>
+  <%= t(:new_price) %><br />
+  <p><%= text_field_tag "new_price" %></p>
+  <%= submit_tag t(:change_price) %>
+<%end-%>

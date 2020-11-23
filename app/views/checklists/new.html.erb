@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "table_style" %>
+<table>
+  <tr>
+  	<td><%=t :checklist_number %>:</td><td><%= @checklist_number %></td><td></td>
+	<th><%=t :brunch %></th>
+  </tr>
+  <tr>
+	 <th style="background-color: #b4d05c;"><%=t :department %></th>
+	 <th style="background-color: #b4d05c;"><%=t :sector %></th>
+  <% @brunches.each do |brun|  %>
+      <th><%= brun.name %></th>
+  <% end %>
+  </tr>
+<% form_for :new_checklist, :url => {:action => "create", :id => params[:id]} do |f| %>
+  <% i = 0; j = 0; k = 0; a = 0 %>
+  <% while a < @departments.length %>
+  	<% while k < @departments[a].sectors.length  %>
+		  <tr class="even">
+			<% @iterator += 1 %>
+	  		<% if k == 0 %>
+				<td ><%= @departments[a].name %></td>
+				<td ><%= @departments[a].sectors[k].name %></td>
+			<% else %>
+				<td></td>
+				<td ><%= @departments[a].sectors[k].name %></td>
+			<% end %>
+	    <% while j < @brunches.length %>
+	          <td><%= f.text_field "x#{@brunches[j].id.to_s}y#{@departments[a].sectors[k].id.to_s}", :size => 5 %></td>
+	          <% j += 1  %>
+	    <% end %>
+		<%k += 1; j = 0%>
+		</tr>
+	<% end %>
+	<%k = 0; i += 2; a +=1 %>
+  <% end %>
+  <tr>
+  	<td><%= f.submit t(:save) %></td>
+  </tr>
+<% end %>
+</table>

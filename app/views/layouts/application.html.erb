@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<%= stylesheet_link_tag "layout_style" %>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title><%=t :library %></title>
+	</head>
+	<body>
+	<div id="menu">
+		<%= link_to t(:main), :controller => "library", :action => "index"%>&nbsp;&nbsp;
+		<%= link_to( t(:administation), 
+			:controller => "admin", :action => "index") if session[:admin] == 1 %>&nbsp;&nbsp;
+		<%= link_to (t(:login), 
+			:controller => "admin", :action => "login") if session[:user_id].nil? %>&nbsp;&nbsp;
+		<%= link_to (t(:logout), 
+			:controller => "admin", :action => "logout") unless session[:user_id].nil? %>&nbsp;&nbsp;
+	</div>
+	<div id="all">	
+		<%= yield :layout %>
+	</div>
+	</body>
+</html>

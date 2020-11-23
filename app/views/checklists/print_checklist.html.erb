@@ -1,0 +1,55 @@
+<%= javascript_include_tag "jquery" %>
+<div id="form">
+	<h3 style="white-space: nowrap;">ЖИТОМИРСЬКА ОБЛАСНА УНІВЕРСАЛЬНА НАУКОВА БІБЛІОТЕКА IM. O. OЛЬЖИЧА</h3>
+	
+	<p>
+		Контрольний талон № <%= @checklist_id %><br />
+		Дата <%= Date.today %><br />
+		Прізвище читача <%= @reader.surname + " " + @reader.name + " " + @reader.father_name %>
+	</p>
+	<table border="1" bordercolor="black" cellpadding="5" cellspacing="0" style="font-size: 14px;">
+	  <tr>
+	  	<td rowspan="2"><%=t :department %></td>
+		<td rowspan="2"><%=t :sector %></td>
+	  	<td colspan="2" >
+		<th style="border: 0"><%=t :brunch %></th>
+	  </tr>
+	  <tr>
+	  <% @brunches.each do |brun|  %>
+		  <% if brun.name.length < 2 %>
+		      <th style="font-size: 14px">&nbsp;<%= brun.name %>&nbsp;&nbsp;</th>
+		  <% elsif brun.name.length < 3 %>
+		  	  <th style="font-size: 14px">&nbsp;<%= brun.name %>&nbsp;</th>
+		  <% else %>
+		  	  <th style="font-size: 14px"><%= brun.name %></th>
+	      <% end %>
+	  <% end %>
+	  </tr>
+	  <% i = 0; j = 0; k = 0; a = 0 %>
+	  <% while a < @departments.length %>
+	  	<% while k < @departments[a].sectors.length  %>
+			 <tr>
+				<% @iterator += 1 %>
+		  		<% if k == 0 %>
+					<td style="border-bottom: 0; border-left: 0;"><%= @departments[a].name %></td>
+					<td><%= @departments[a].sectors[k].name %></td>
+				<% else %>
+					<td></td>
+					<td><%= @departments[a].sectors[k].name %></td>
+				<% end %>
+		    <% while j < @brunches.length %>
+		          <td slyle="height: 40; width: 60;">&nbsp;</td>
+		          <% j += 1  %>
+		    <% end %>
+			<%k += 1; j = 0%>
+			</tr>
+		<% end %>
+		<%k = 0; i += 2; a +=1 %>
+	  <% end %>
+	</table>
+</div>
+<script type="text/javascript">
+		$(document).ready( function() {
+				jQuery('div#form').printArea();
+		});
+</script>

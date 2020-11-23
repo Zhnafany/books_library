@@ -1,0 +1,15 @@
+<h1>New work_place</h1>
+
+<% form_for(@work_place) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', work_places_path %>

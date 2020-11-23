@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag "table_style" %>
+<%= stylesheet_link_tag "main_style" %>
+<% if flash[:no_checklist] %>
+<div id="flash">
+	<em><%= flash[:no_checklist] %></em><br />
+</div>
+<% end %>
+<% if flash[:checklist] %>
+<div id="flash">
+	<em><%= flash[:checklist] %></em><br />
+	<%=t :checklist_number %>: <%= @checklist.day_number %><br />
+	<%= button_to t(:edit_checklist), :action => "edit", :id => @checklist %>
+</div>
+<% end %>
+<%= button_to t(:checklists_archive), :action => "checklists_archive" %>
+<% form_tag :action => "edit" do %>
+	<%=t :checklist_number %><br />
+	<%= text_field_tag :day_number, @checklist == "" ? "" : @checklist.day_number, :size => 10 %><br />
+	<br />
+	<%= submit_tag t(:edit) %>
+<% end %>
+
+<div id="checklists_empty" style="position: absolute;">
+	<table>
+		<th><%=t :checklists_empty %></th>
+		<% for checklist in @checklists_empty do %>
+		  <% if @iterator.even? %>
+		  	<tr class="even">
+		  <% elsif @iterator.odd? %>
+		  	<tr class="odd">
+		  <% end %>
+				<td><%= link_to checklist.day_number, :action => "edit", :id => checklist%></td>
+			</tr>
+			<% @iterator += 1 %>
+		<% end %>
+	</table>
+</div>
+
+<% @iterator = 0 %>
+<div id="checklists_filed" style="position: absolute; left: 8.3%">
+	<table>
+		<th><%=t :checklists_filed %></th>
+		<% for checklist in @checklists_filed do %>
+		  <% if @iterator.even? %>
+		  	<tr class="even">
+		  <% elsif @iterator.odd? %>
+		  	<tr class="odd">
+		  <% end %>
+				<td><%= link_to checklist.day_number, :action => "edit", :id => checklist%></td>
+			</tr>
+			<% @iterator += 1 %>
+		<% end %>
+	</table>
+</div>

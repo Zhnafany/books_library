@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "table_style" %>
+<h1><%=t :event_new %></h1>
+
+<fieldset>
+  <legend><%=t :enter_event_data %></legend>
+<% form_for :new_event, :url => {:action => "create"} do |f| %>
+
+  <p>
+    <%=t :event_name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%=t :event_listener %><br />
+    <%= f.text_field :count, :value => 0 %>
+  </p>
+  <p>
+	<table class="events_select_departments">
+	<tr class="odd">
+		<% @departs = Department.find :all, :order => "name ASC" %>
+		<% for dep in @departs %>
+			<td><%= check_box :departments, dep.id.to_s%></td>
+				<td><%= dep.name %></td>
+		<% end %>
+	</tr>
+	</table>
+  </p>
+</fieldset>
+	<br />
+	<table>
+		<tr>
+	   	 <td><%= submit_tag t(:create) %></td>
+   	   	 <td><input value="<%= t(:back)%>" type="button" onClick="window.location.pathname = '/events';"></td>
+   		</tr>
+   	</table>
+<% end %>

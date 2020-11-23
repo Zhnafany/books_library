@@ -1,0 +1,283 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+ 
+  address: "Address"
+  
+  are_you_sure: "Are you sure?"
+  
+  all_at_library: "All at library"
+
+  all_at_sectors: "All at sectors"
+
+  all_at_departments: "All at departments"
+
+  all_at_department: "All at department"
+
+  all_at_reading_room: "All at reading room"
+
+  add_reader: "Add reader"
+  
+  administation: "Administration"
+  
+  add_street: "Add street"
+  
+  add_city: "Add city"
+  
+  add_work_place: "Add work place"
+  
+  add_user: "Add user"
+  
+  add_faculty: "Add faculty"
+  
+  add_edu: "Add edu"
+  
+  all_users: "All users"
+
+  hello: "Hello"
+
+  library: "Library"
+  
+  login: "Login"
+  
+  logout: "Logout"
+  
+  login_please_message: "Login please"
+  
+  back: "Back"
+  
+  benefit: "Benefits"
+  
+  brunch: "Brunch"
+  
+  birthdate: "Birthdate"
+   
+  bookkeep_yes: "Yes"
+  
+  bookkeep_no: "No"
+  
+  book_delivery: "Book keeping"
+  
+  brunches_departments: "Brunches and departments"
+  
+  category: "Category"
+  
+  city: "City"
+  
+  const_work_place: "Constant work place"
+  
+  create: "Create"
+  
+  contact_information: "Contact information"
+  
+  checklists_empty: "Empty checklists"
+  
+  checklists_filed: "Filed checklists" 
+  
+  checklists: "Checklists"
+  
+  checklist_number: "Checklist number"
+  
+  checklists_archive: "Checklists's archive"
+  
+  catered_reader: "Catered reader"
+  
+  count: "Amount"
+  
+  count_field_empty: "Field \"Listeners amount\" empty"
+
+  change_price: "Change price"
+  
+  new_registration: "New registration"
+  
+  new_payment: "Payment"
+  
+  name: "Name"
+  
+  next: "Next"
+
+  new_price: "New price"
+
+  now_price: "Now price"
+  
+  numeric_only: "Field \"Listeners amount\" must be only numbers"
+  
+  name_field_empty: "Field \"Listeners amount\" empty"
+  
+  make_debtor: "Make debtor"
+  
+  make_payment: "Re-registration"
+  
+  main: "Main"
+  
+  money_to_pay: "Money to pay"
+  
+  money_paided: "Money paided"
+  
+  mm: "MM"
+  
+  father_name: "Father name"
+  
+  faculty: "Faculty"
+  
+  search_and_edit: "Search/Edit reader"
+  
+  surname: "Surname"
+  
+  save: "Save"
+  
+  sector: "Sector"
+  
+  status: "Status"
+  
+  street: "Street"
+  
+  ticket_number: "Ticket number"
+  
+  to: "to: "
+  
+  there_are_no_such_checklist: "There are no such checklist with this number"
+  
+  degree: "Degree"
+  
+  department: "Department"
+  
+  departments: "Departments"
+  
+  debtor: "DEBTOR"
+  
+  document_type: "Document type"
+  
+  document_num: "Document nubmer"
+  
+  destroy: "Destroy"
+  
+  debtors_list: "Debtors list"
+  
+  debtors: "Debtors"
+  
+  dd: "DD"
+  
+  date: "Date"
+  
+  give_checklist: "Give checklist"
+  
+  yyyy: "YYYY"
+  
+  fill_checklist: "Fill checklist"
+  
+  flat_number: "Flat number"
+  
+  from_year_begin: "From year begin"
+  
+  from_month_begin: "From month begin"
+  
+  from: "From: "
+  
+  filed: "Filed"
+  
+  price_changed: "Price changed successfully"
+
+  per_day: "Per day"
+  
+  per_month: "Per month"
+  
+  period: "Period"
+  
+  password: "Password"
+  
+  print: "Print"
+  
+  show: "Show"
+  
+  edit: "Edit"
+  
+  edit_reader: "Edit reader"
+  
+  edit_checklist: "Edit checklist"
+  
+  events: "Events"
+ 
+  event_date: "Event date"
+  
+  event_name: "Event name"
+  
+  event_listener: "Listener amount"
+  
+  event_new: "New event"
+  
+  educational_institution: "Edu"
+  
+  enter_event_data: "Enter event data"
+  
+  enter_data: "Enter data"
+  
+  enter: "Enter"
+  
+  email: "Email"
+    
+  region: "Region"
+  
+  reader_information: "Reader information"
+  
+  reader_status: "Reader status"
+  
+  reader_payment: "Payment status"
+  
+  reader_bookkeep: "Reader bookkeep"
+  
+  registration_type: "Registration type"
+  
+  reports: "Reports"
+  
+  report_readers: "Readers report"
+  
+  report_brunches: "Brunches report"
+  
+  report_payments: "Payments reports"
+  
+  work_place: "Work place"
+  
+  house_number: "House number"
+  
+  post_code: "Post code"
+  
+  print_checklist: "Print checklist"
+  
+  print_reader_ticket: "Print reader ticket"
+  
+  paid: "Paid"
+  
+  plan: "Plan"
+  
+  preview: "Preview"
+  
+  not_paid: "Need registration"
+  
+  phone: "Phone"
+  
+  per_quarter: "Per quarter"
+  
+  password_confirmation: "Password confirmation"
+  
+  one_reader: "One reader"
+  
+  visiting: "Visiting"
+  
+  quarter: "Quarter"
+  
+  user: "User"
+  
+  users: "Users"
+  
+  user_created: "User created"
+  
+  user_didnt_create: "Check entering data"
+  
+  logout_message: "successfully logout"
+  
+  invalid_user_password: "Invalid user name or password"
+  
+  go: "Go" 
